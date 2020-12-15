@@ -45,10 +45,10 @@ const smallcardpadding = 260 / 19.2;//260 px to vw
 const aboutpagevw = 1500 / 19.2;
 const intropagevw = 90;
 const vwidth = (smallcardvw + smallcardpadding) * smallcards + aboutpagevw + intropagevw;
-const whole = -vwidth / 100 * window.innerWidth
-const barlength = 93.125;
-const spacing = 3.4375;
-const tablength = 10000 / vwidth
+//const whole = -vwidth / 100 * window.innerWidth
+//const barlength = 93.125;
+//const spacing = 3.4375;
+//const tablength = 10000 / vwidth
 
 window.scrollvar = {
   smallcards: 4,//
@@ -57,10 +57,15 @@ window.scrollvar = {
   aboutpagevw: 1500 / 19.2,
   intropagevw: 90,
   vwidth: (smallcardvw + smallcardpadding) * smallcards + aboutpagevw + intropagevw,
-  whole: -vwidth / 100 * window.innerWidth,
+  whole: function () {//px value of vwdith
+    return -window.scrollvar.vwidth / 100 * window.innerWidth
+  },
   barlength: 93.125,
   spacing: 3.4375,
-  tablength: 10000 / vwidth
+  tablength: 10000 / vwidth,
+  pxtovw: function () {
+    return 1;
+  }
 }
 
 //handles sideways scrolling throttled
@@ -70,31 +75,28 @@ let posthrottle = throttle(function () {
 
   var newpos = lerp(window.xpos, window.xdest, 0.05)
 
-  if (newpos < window.scrollvar.whole) {
-    newpos %= window.scrollvar.whole;// get new position on opposite side of window
-    window.xdest %= window.scrollvar.whole;
+  if (newpos < window.scrollvar.whole()) {
+    newpos %= window.scrollvar.whole();// get new position on opposite side of window
+    window.xdest %= window.scrollvar.whole();
   } else if (newpos > 0) {
-    newpos = (newpos % window.scrollvar.whole) + window.scrollvar.whole;// get new position on opposite side of window
-    window.xdest = (window.xdest % window.scrollvar.whole) + window.scrollvar.whole;
+    newpos = (newpos % window.scrollvar.whole()) + window.scrollvar.whole();// get new position on opposite side of window
+    window.xdest = (window.xdest % window.scrollvar.whole()) + window.scrollvar.whole();
   }
   //smooth out position
   window.xpos = newpos
   document.getElementById('app').style.transform = 'translateX(' + window.xpos + 'px)'
 
   //these are vws
-  const barlength = 93.125;
-  const spacing = 3.4375;
-  const tablength = 10000 / vwidth
-  var left = (window.xpos / whole * barlength)
-  var right = (left + tablength)
-  if (right > barlength) {
-    right = barlength;// prevent right side of bar exceeding the guide
-    document.getElementById('scrollbar-tab').style.width = (barlength - left) + 'vw'
+  var left = (window.xpos / window.scrollvar.whole() * window.scrollvar.barlength)
+  var right = (left + window.scrollvar.tablength)
+  if (right > window.scrollvar.barlength) {
+    right = window.scrollvar.barlength;// prevent right side of bar exceeding the guide
+    document.getElementById('scrollbar-tab').style.width = (window.scrollvar.barlength - left) + 'vw'
 
     //set the dummy bar
-    document.getElementById('scrollbar-tab-dummy').style.width = (tablength - barlength + left) + 'vw'
+    document.getElementById('scrollbar-tab-dummy').style.width = (window.scrollvar.tablength - window.scrollvar.barlength + left) + 'vw'
   } else {
-    document.getElementById('scrollbar-tab').style.width = tablength + 'vw'
+    document.getElementById('scrollbar-tab').style.width = window.scrollvar.tablength + 'vw'
     document.getElementById('scrollbar-tab-dummy').style.width = 0 + 'vw'
 
   }
@@ -129,7 +131,7 @@ export class App extends React.Component {
 
       //positive = down = right
       const delta = Math.sign(event.deltaY);
-      window.xdest += -delta * 100;
+      window.xdest -= delta * 70 * (window.innerWidth / 1000);//scrolling is now responsive
     });
 
   }
@@ -208,7 +210,7 @@ export class BottomScrollbar extends React.Component {
 
     //using let so it can be referenced to remove listener
     let onMouseMove = function onMouseMove(event) {
-      window.xdest += ((event.pageX - prev) * 100 / 92 / window.innerWidth * window.scrollvar.whole)
+      window.xdest += ((event.pageX - prev) * 100 / 92 / window.innerWidth * window.scrollvar.whole())
       prev = event.pageX
     }
 
@@ -245,14 +247,14 @@ export class BottomScrollbar extends React.Component {
     //relative to its index
     //console.log('index ', index)
 
-    return ((-(window.scrollvar.intropagevw + window.scrollvar.smallcardvw / 2 - 50 + ((window.scrollvar.smallcardvw + window.scrollvar.smallcardpadding) * index)) / 100 * window.innerWidth) / window.scrollvar.whole * window.scrollvar.barlength)
+    return ((-(window.scrollvar.intropagevw + window.scrollvar.smallcardvw / 2 - 50 + ((window.scrollvar.smallcardvw + window.scrollvar.smallcardpadding) * index)) / 100 * window.innerWidth) / window.scrollvar.whole() * window.scrollvar.barlength)
       + (window.scrollvar.tablength / 2)
 
   }
   leftvw(vw) {// calculates the left value for absolute positioning
     //relative to its index
 
-    return ((-(vw) / 100 * window.innerWidth) / window.scrollvar.whole * window.scrollvar.barlength) + (window.scrollvar.tablength / 2)
+    return ((-(vw) / 100 * window.innerWidth) / window.scrollvar.whole() * window.scrollvar.barlength) + (window.scrollvar.tablength / 2)
   }
   render() {
     const cardnames = ['seji', 'nomina', 'drop bot', 'misc'];
