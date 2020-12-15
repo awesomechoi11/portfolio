@@ -106,10 +106,10 @@ export class SmallCard extends React.Component {
 
                     <div className="preview" onClick={() => {
                         //disable mwheel
-                        let owo = this.props.enabled
+                        let owo = this.props.enabled //if card is enabled
                         if (owo == 'true') {
                             window.mwheel = false;
-                            window.xdest = -(90 + 13.5 - 50 + ((27 + (260 / 19.2)) * this.index)) / 100 * window.innerWidth
+                            window.xdest = -((window.scrollvar.intropagevw + window.scrollvar.smallcardvw / 2 - 50 + ((window.scrollvar.smallcardvw + window.scrollvar.smallcardpadding) * this.index)) / 100 * window.innerWidth)
 
                             //lower the bottom bar
                             anime({

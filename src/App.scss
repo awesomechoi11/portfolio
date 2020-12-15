@@ -117,7 +117,8 @@ $staatliches: "Staatliches", cursive;
     opacity: 1;
   }
 }
-.productitems {
+.productitems,
+.product-preview-inner {
   //display: none;
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
@@ -126,7 +127,15 @@ $staatliches: "Staatliches", cursive;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
-
+.product-page {
+  //display: none;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 0.3s;
+  animation-duration: 0.3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
 .product-page {
   position: absolute;
   left: 28.6875vw;
@@ -158,7 +167,6 @@ $staatliches: "Staatliches", cursive;
     }
     .product-preview {
       height: calcvw(660);
-
       overflow: hidden;
       .product-preview-inner {
         margin-top: 5.20833vw;
