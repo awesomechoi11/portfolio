@@ -1,0 +1,304 @@
+$eerieblack: #242320;
+$alabaster: #e9edde;
+$black: #000;
+@import url("https://fonts.googleapis.com/css2?family=Scheherazade&family=Secular+One&family=Sen:wght@400;700&family=Staatliches&display=swap");
+
+$scheherazade: "Scheherazade", serif;
+.scheherazade {
+  font-family: $scheherazade;
+}
+$secular-one: "Secular One", sans-serif;
+.secular {
+  font-family: $secular-one;
+}
+$sen: "Sen", sans-serif;
+.sen {
+  font-family: $sen;
+}
+$staatliches: "Staatliches", cursive;
+.staatliches {
+  font-family: $staatliches;
+}
+
+@function calcvw($value) {
+  @return 100vw * ($value / 1920);
+}
+
+.scrollbar {
+  position: absolute;
+  left: 3.4375vw;
+  width: 93.125vw;
+  height: 1px;
+  bottom: 15px;
+  background: white;
+}
+#scrollbar {
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100vw;
+  height: 20px;
+  &:hover {
+    #scrollbar-tab,
+    #scrollbar-tab-dummy {
+      height: 15px;
+      bottom: -7.5px;
+      transition: bottom 250ms, height 250ms;
+    }
+  }
+}
+#scrollbar-tab {
+  position: absolute;
+
+  width: 25.1123595505618vw;
+  height: 10px;
+  bottom: -5px;
+  background: white;
+  &:hover {
+    cursor: pointer;
+    background: rgb(138, 138, 138);
+  }
+}
+#scrollbar-tab-dummy {
+  position: absolute;
+  left: 0;
+  width: 10vw;
+  height: 10px;
+  bottom: -5px;
+  background: white;
+  &:hover {
+    cursor: pointer;
+    background: rgb(138, 138, 138);
+  }
+}
+.scrollbar-titles {
+  position: absolute;
+
+  > span {
+    position: absolute;
+    bottom: 10px;
+    font-size: calcvw(24);
+    > .title-inner {
+      white-space: nowrap;
+      position: relative;
+      left: -50%;
+      cursor: pointer;
+      color: #d5d5d5;
+      font-family: "Sen", sans-serif;
+      font-weight: 700;
+    }
+  }
+}
+#product-wrappaer {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+.productitems {
+  //display: none;
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 3s;
+  animation-duration: 3s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.product-page {
+  position: absolute;
+  left: 28.6875vw;
+  top: 0px;
+  width: 42.625vw;
+  height: 100vh;
+  background: $eerieblack;
+  .product-controls {
+    position: absolute;
+    z-index: 10;
+    .close {
+      position: relative;
+      top: calcvw(75);
+      left: calcvw(75);
+      cursor: pointer;
+      #close-button {
+        width: calcvw(30);
+        fill: none;
+        stroke: #e9edde;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        stroke-width: 2px;
+      }
+    }
+  }
+  .product-inner {
+    > * {
+      margin: 0 calcvw(150) 0 calcvw(150);
+    }
+    .product-preview {
+      height: calcvw(660);
+
+      overflow: hidden;
+      .product-preview-inner {
+        margin-top: 5.20833vw;
+        height: 29.166664vw;
+        > video {
+          width: 100%;
+        }
+      }
+    }
+    .product-info {
+      height: calcvw(140);
+      .product-header {
+        color: white;
+        display: flex;
+        font-family: $secular-one;
+        justify-content: space-between;
+        font-size: calcvw(24);
+        text-transform: uppercase;
+        text-align: left;
+        //background: blanchedalmond;
+        padding-top: calcvw(13);
+        padding-bottom: calcvw(13);
+      }
+      .product-year {
+        color: grey;
+      }
+      .product-desc {
+        height: 50%;
+        font-size: calcvw(14);
+        font-family: $sen;
+        text-align: left;
+        color: #e9edde;
+      }
+    }
+    .product-gallery {
+    }
+  }
+}
+@mixin calcvwall($width, $height, $left, $top) {
+  width: calcvw($width);
+  height: calcvw($height);
+  left: calcvw($left);
+  top: calcvw($top);
+}
+.seji-wrapper {
+  height: calcvw(2450);
+  > * {
+    position: absolute;
+    background-size: contain !important;
+    video {
+      width: 100%;
+    }
+  }
+  .seji1 {
+    @include calcvwall($width: 713, $height: 344, $left: 148, $top: 800);
+    background: url(seji/Screenshot_1.jpg);
+  }
+  .seji2 {
+    @include calcvwall(713, 344.13, 605, 1010);
+    background: url(seji/Screenshot_2.jpg);
+  }
+  .seji3 {
+    @include calcvwall($width: 713, $height: 331.3, $left: 1063, $top: 1221);
+    background: url(seji/Screenshot_3.jpg);
+  }
+  .seji4 {
+    @include calcvwall($width: 1000, $height: 562.86, $left: 460, $top: 1670);
+  }
+  .seji5 {
+    @include calcvwall($width: 750, $height: 422.05, $left: 287, $top: 2396);
+  }
+  .seji6 {
+    @include calcvwall($width: 750, $height: 422.05, $left: 883, $top: 2641);
+  }
+}
+.nominal-wrapper {
+  height: calcvw(2450);
+  > * {
+    position: absolute;
+    background-size: contain !important;
+
+    video {
+      width: 100%;
+    }
+  }
+  .product-items {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+  }
+  .nominal1 {
+    @include calcvwall($width: 713, $height: 344, $left: 148, $top: 800);
+    background: url(nomina/Screenshot_4.jpg);
+  }
+  .nominal2 {
+    @include calcvwall(713, 344.13, 605, 1010);
+    background: url(nomina/Screenshot_5.jpg);
+  }
+  .nominal3 {
+    @include calcvwall($width: 713, $height: 331.3, $left: 1063, $top: 1221);
+    background: url(nomina/Screenshot_7.jpg);
+  }
+  .nominal4 {
+    @include calcvwall($width: 1000, $height: 562.86, $left: 460, $top: 1670);
+  }
+  .nominal5 {
+    @include calcvwall($width: 750, $height: 422.05, $left: 287, $top: 2396);
+  }
+  .nominal6 {
+    @include calcvwall($width: 750, $height: 422.05, $left: 883, $top: 2641);
+  }
+}
+.drop-wrapper {
+  height: calcvw(2450);
+  > * {
+    position: absolute;
+    background-size: contain !important;
+    video {
+      width: 100%;
+    }
+  }
+  .drop1 {
+    @include calcvwall($width: 713, $height: 344, $left: 148, $top: 800);
+    background: url(seji/Screenshot_1.jpg);
+  }
+  .drop2 {
+    @include calcvwall(713, 344.13, 605, 1010);
+    background: url(seji/Screenshot_2.jpg);
+  }
+  .drop3 {
+    @include calcvwall($width: 713, $height: 331.3, $left: 1063, $top: 1221);
+    background: url(seji/Screenshot_3.jpg);
+  }
+  .drop4 {
+    @include calcvwall($width: 1000, $height: 562.86, $left: 460, $top: 1670);
+  }
+  .drop5 {
+    @include calcvwall($width: 750, $height: 422.05, $left: 287, $top: 2396);
+  }
+  .drop6 {
+    @include calcvwall($width: 750, $height: 422.05, $left: 883, $top: 2641);
+  }
+}
