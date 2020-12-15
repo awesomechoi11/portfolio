@@ -306,7 +306,13 @@ class ProductPage extends React.Component {
             direction: 'alternate',
             loop: true
 
-        })
+        }).add({
+            targets: '#product-wrapper',
+            easing: 'easeInOutSine',
+            duration: 300,
+            opacity: [0, 1],
+
+        }, 0)
         //console.log(this.scroll)
         //set loading animation
     }
@@ -320,12 +326,12 @@ class ProductPage extends React.Component {
         var container = document.getElementById('product-wrapper');
         window.mwheel = true;
         anime.timeline({
-
+            easing: 'cubicBezier(.16,.69,.21,.99)',
+            duration: 500
         }).add({
-            targets: '#productpage',
+            targets: container,
             top: window.innerHeight,
-            opacity: 0,
-            duration: 1000
+            opacity: [1, 0],
         }).add({
             targets: '#scrollbar',
             easing: 'cubicBezier(.16,.69,.21,.99)',
