@@ -23,6 +23,10 @@ $staatliches: "Staatliches", cursive;
   @return 100vw * ($value / 1920);
 }
 
+body {
+  margin: 0;
+}
+
 .scrollbar {
   position: absolute;
   left: 3.4375vw;

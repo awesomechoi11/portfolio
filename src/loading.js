@@ -75,7 +75,7 @@ export class Loading extends React.Component {
         }, totaldur / 3).add({
             targets: '#intropage-inner',
             easing: 'cubicBezier(.16,.69,.21,.99)',
-            'padding-left': ['26.614585vw', '3.80208vw'],
+            'padding-left': ['26.614585vw', '3.4375vw'],
             duration: totaldur / 3
         }).add({
             targets: '#scrollbar',
