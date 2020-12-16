@@ -30,6 +30,7 @@ $staatliches: "Staatliches", cursive;
     width: 0;
     height: 0;
     //opacity: 0;
+    //pointer-events: none;
 }
 .loading {
     overflow: hidden;
@@ -48,12 +49,12 @@ $staatliches: "Staatliches", cursive;
         font-size: 64px;
 
         #intropage-inner {
-            padding-top: 11.822917vw;
-            padding-left: 3.4375vw;
+            padding-top: calcvw(235);
+            padding-left: calcvw(73);
             width: calcvw(898);
-            > * {
-                //position: relative;
-            }
+            //> * {
+            //position: relative;
+            //}
         }
         .big-name {
             color: $alabaster;
@@ -61,14 +62,17 @@ $staatliches: "Staatliches", cursive;
             font-size: calcvw(144);
             white-space: nowrap;
             .Brandon {
+                width: 102%;
                 margin-left: calcvw(-9);
                 float: left;
-                height: calcvw(209);
+                height: calcvw(185);
+                overflow: hidden;
             }
         }
         #name-underline {
             position: relative;
             top: calcvw(-26);
+            width: 102%;
             height: 20px;
             background: $black;
         }

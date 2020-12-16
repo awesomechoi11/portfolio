@@ -56,25 +56,41 @@ export class Loading extends React.Component {
     componentDidMount() {
         //setTimeout(this.loadApp, 1000)
         this.loadApp();
+        const totaldur = 2000
         anime.timeline({
 
         }).add({
-            delay: 1000,
+            delay: totaldur / 3,
             targets: '#name-underline',
             easing: 'cubicBezier(.16,.69,.21,.99)',
+            //easing: 'linear',
             width: ['0vw', '46.77083vw'],
-            duration: 1000
+            duration: totaldur / 3
         }).add({
+            targets: '.bchoiletter',
+            easing: 'cubicBezier(.16,.69,.21,.99)',
+            delay: anime.stagger(41),
+            translateY: ['20vw', '0vw'],
+            duration: totaldur / 3
+        }, totaldur / 3).add({
             targets: '#intropage-inner',
             easing: 'cubicBezier(.16,.69,.21,.99)',
-            'padding-left': ['26.614585vw', '3.4375vw'],
-            duration: 1000
+            'padding-left': ['26.614585vw', '3.80208vw'],
+            duration: totaldur / 3
         }).add({
             targets: '#scrollbar',
             easing: 'cubicBezier(.16,.69,.21,.99)',
             bottom: ['-80px', '0px'],
-            duration: 1000
-        })
+            duration: totaldur / 3
+        }).add({
+            targets: '#loading',
+            easing: 'cubicBezier(.16,.69,.21,.99)',
+            opacity: [1, 0],
+            duration: totaldur / 3,
+            complete: function (anim) {
+                document.getElementById('loading').style.pointerEvents = 'none'
+            }
+        }, '-=' + totaldur / 3)
     }
 
     render() {
@@ -119,9 +135,9 @@ class Indletters extends React.Component {
             <div className={this.props.children}>
                 {this.props.children.split('').map((letter, index) => {
                     if (letter == ' ') {
-                        return <div style={{ float: 'left' }} key={index}> &nbsp;</div>
+                        return <div style={{ float: 'left' }} key={index} className='bchoiletter'> &nbsp;</div>
                     }
-                    return <div style={{ float: 'left' }} key={index}>{letter} </div>
+                    return <div style={{ float: 'left' }} key={index} className='bchoiletter'>{letter} </div>
                 })}
             </div>
         );
