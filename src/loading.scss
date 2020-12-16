@@ -1,0 +1,83 @@
+$eerieblack: #242320;
+$alabaster: #e9edde;
+$black: #000;
+
+$scheherazade: "Scheherazade", serif;
+.scheherazade {
+    font-family: $scheherazade;
+}
+$secular-one: "Secular One", sans-serif;
+.secular {
+    font-family: $secular-one;
+}
+$sen: "Sen", sans-serif;
+.sen {
+    font-family: $sen;
+}
+$staatliches: "Staatliches", cursive;
+.staatliches {
+    font-family: $staatliches;
+}
+
+@function calcvw($value) {
+    @return 100vw * ($value / 1920);
+}
+
+#loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    //opacity: 0;
+}
+.loading {
+    overflow: hidden;
+    position: relative;
+    left: 0;
+    width: 100vw;
+    top: 0;
+    height: 100vh;
+    background: $eerieblack;
+    .intropage {
+        width: 90vw;
+        height: 100vh;
+        background: $eerieblack;
+        color: $alabaster;
+        font-family: $staatliches;
+        font-size: 64px;
+
+        #intropage-inner {
+            padding-top: 11.822917vw;
+            padding-left: 3.4375vw;
+            width: calcvw(898);
+            > * {
+                //position: relative;
+            }
+        }
+        .big-name {
+            color: $alabaster;
+            font-family: $secular-one;
+            font-size: calcvw(144);
+            white-space: nowrap;
+            .Brandon {
+                margin-left: calcvw(-9);
+                float: left;
+                height: calcvw(209);
+            }
+        }
+        #name-underline {
+            position: relative;
+            top: calcvw(-26);
+            height: 20px;
+            background: $black;
+        }
+        .desc {
+            font-family: $sen;
+            font-size: calcvw(46);
+            font-weight: 700;
+            text-decoration: underline;
+            text-align: left;
+        }
+    }
+}

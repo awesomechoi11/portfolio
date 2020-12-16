@@ -1,22 +1,15 @@
+import reportWebVitals from './reportWebVitals';
+import { Loading } from './loading';
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import { App, BottomScrollbar } from './App';
-
-import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Loading />
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById('loading')
 );
-ReactDOM.render(
-  <React.StrictMode>
-    <BottomScrollbar />
-  </React.StrictMode>,
-  document.getElementById('scrollbar')
-);
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -5,7 +5,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import loadable from '@loadable/component'
+
 
 
 import React from 'react';
@@ -17,11 +17,10 @@ import throttle from 'lodash.throttle';
 
 import preview1 from './previews/SIGN.jpg'
 import preview2 from './previews/Seji-Preview-1.m4v'
-
 import nomina1 from './previews/nomina-prev.jpg'
 import nomina2 from './previews/nomina-prev.m4v'
-
 import comingsoon from './comingsoon.jpg'
+
 
 function lerp(xi, xf, a) {
   if (Math.abs(xf - xi) < 0.1) {
