@@ -72,9 +72,16 @@ export class AboutPage extends React.Component {
                             window.open(window.location.origin + resume)
                         }}
                         className='resume'>
-                        resume!
+                        resume
                     </span>
-
+                    &nbsp; or my
+                    <span
+                        onClick={() => {
+                            window.open('https://github.com/awesomechoi11')
+                        }}
+                        className='resume'>
+                        github!
+                    </span>
                 </div>
 
 
