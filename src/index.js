@@ -9,8 +9,8 @@ import MobileDetect from 'mobile-detect';
 var md = new MobileDetect(window.navigator.userAgent);
 console.log(md.mobile())
 
-//if (md.mobile()) {
-if (true) {
+if (md.mobile()) {
+  //if (true) {
   //if mobile
   //remove lower bar
   ReactDOM.render(
