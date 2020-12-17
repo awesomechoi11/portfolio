@@ -67,16 +67,17 @@ body {
     width: 100vw;
     height: 100vh;
     background: $eerieblack;
+    overflow-y: scroll;
+    overflow-x: hidden;
     .product-controls {
         position: absolute;
         z-index: 10;
         .close {
             position: relative;
             top: calcvw(75);
-            left: calcvw(75);
-            cursor: pointer;
+            right: -90vw;
             #close-button {
-                width: calcvw(30);
+                width: 7vw;
                 fill: none;
                 stroke: #e9edde;
                 stroke-linecap: round;
@@ -86,22 +87,21 @@ body {
         }
     }
     .product-inner {
+        margin-top: 15vw;
         > * {
             margin: 0 calcvw(150) 0 calcvw(150);
         }
         .product-preview {
-            height: calcvw(660);
+            height: 39.875vw;
             overflow: hidden;
             .product-preview-inner {
-                margin-top: 5.20833vw;
-                height: 29.166664vw;
+                height: 100%;
                 > video {
                     width: 100%;
                 }
             }
         }
         .product-info {
-            height: calcvw(140);
             .product-header {
                 color: white;
                 display: flex;
@@ -110,7 +110,6 @@ body {
                 font-size: calcvw(154);
                 text-transform: uppercase;
                 text-align: left;
-                //background: blanchedalmond;
                 padding-top: calcvw(13);
                 padding-bottom: calcvw(13);
             }
@@ -126,6 +125,7 @@ body {
             }
         }
         .product-gallery {
+            position: relative;
         }
     }
 }
@@ -136,71 +136,43 @@ body {
     top: calcvw($top);
 }
 .seji-wrapper {
-    height: calcvw(2450);
     > * {
-        position: absolute;
+        height: 45vw;
+        margin-top: 4vw;
+        width: 80vw;
         background-size: contain !important;
         video {
             width: 100%;
         }
     }
     .seji1 {
-        @include calcvwall($width: 713, $height: 344, $left: 148, $top: 800);
-        //background: url(seji/Screenshot_1.jpg);
+        background: url(../seji/Screenshot_1.jpg);
     }
     .seji2 {
-        @include calcvwall(713, 344.13, 605, 1010);
-        //background: url(seji/Screenshot_2.jpg);
+        background: url(../seji/Screenshot_2.jpg);
     }
     .seji3 {
-        @include calcvwall($width: 713, $height: 331.3, $left: 1063, $top: 1221);
-        //background: url(seji/Screenshot_3.jpg);
-    }
-    .seji4 {
-        @include calcvwall($width: 1000, $height: 562.86, $left: 460, $top: 1670);
-    }
-    .seji5 {
-        @include calcvwall($width: 750, $height: 422.05, $left: 287, $top: 2396);
-    }
-    .seji6 {
-        @include calcvwall($width: 750, $height: 422.05, $left: 883, $top: 2641);
+        background: url(../seji/Screenshot_3.jpg);
     }
 }
 .nominal-wrapper {
-    height: calcvw(2450);
     > * {
-        position: absolute;
+        height: 45vw;
+        margin-top: 4vw;
+        width: 80vw;
         background-size: contain !important;
-
         video {
             width: 100%;
         }
     }
-    .product-items {
-        background-position: center;
-        background-repeat: no-repeat;
-        background-size: 100% auto;
-    }
     .nominal1 {
-        @include calcvwall($width: 713, $height: 344, $left: 148, $top: 800);
-        //background: url(nomina/Screenshot_4.jpg);
+        background: url(../nomina/Screenshot_4.jpg);
     }
     .nominal2 {
-        @include calcvwall(713, 344.13, 605, 1010);
-        //background: url(nomina/Screenshot_5.jpg);
+        background: url(../nomina/Screenshot_5.jpg);
     }
     .nominal3 {
-        @include calcvwall($width: 713, $height: 331.3, $left: 1063, $top: 1221);
-        //background: url(nomina/Screenshot_7.jpg);
-    }
-    .nominal4 {
-        @include calcvwall($width: 1000, $height: 562.86, $left: 460, $top: 1670);
-    }
-    .nominal5 {
-        @include calcvwall($width: 750, $height: 422.05, $left: 287, $top: 2396);
-    }
-    .nominal6 {
-        @include calcvwall($width: 750, $height: 422.05, $left: 883, $top: 2641);
+        background: url(../nomina/Screenshot_7.jpg);
     }
 }
 .drop-wrapper {

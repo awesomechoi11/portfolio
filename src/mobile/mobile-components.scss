@@ -38,19 +38,15 @@ html,
 }
 
 .App {
-    //width: (27vw + calcvw(260)) * 6 + 90vw + 100vw * 2;
     width: 100vw;
     height: 100vh;
     white-space: nowrap;
     overflow: auto;
     display: flex;
+    margin-bottom: 2vw;
     flex-direction: column;
     > * {
-        //float: left;
-
         width: 90vw;
-
-        //height: 20vh;
         white-space: normal;
     }
 }
@@ -58,15 +54,12 @@ html,
 .aboutpage {
     width: 90vw;
     margin-left: 5vw;
-    //height: 100vh;
-    //display: inline;
     text-align: left;
     font-size: calcvw(172);
     font-family: $sen;
     color: $alabaster;
     font-weight: 700;
     .message {
-        //width: 100vw;
         letter-spacing: -2.5px;
         padding-top: 5.20833vw;
         .resume {
@@ -80,11 +73,9 @@ html,
 .small-card {
     background: $eerieblack;
     width: 90vw;
-    display: inline;
     margin: 5vw;
     .card-inner {
         display: inline;
-        //background: red;
         .preview {
             background: grey;
             height: 96.923vw;

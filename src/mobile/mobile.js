@@ -191,34 +191,70 @@ class ProductPage extends React.Component {
             name = 'productitems seji'
             this.content =
                 <div preview={this.props.preview} className='seji-wrapper'>
-                    <div data-scroll data-scroll-speed="1" className={name + 1}></div>
-                    <div data-scroll data-scroll-speed="5" className={name + 2}></div>
-                    <div data-scroll data-scroll-speed="10" className={name + 3}></div>
-                    <div className={name + 4}>
-                        <video src={sejivideo1} playsinline />
+                    <div className={name + 1}></div>
+                    <div className={name + 2}></div>
+                    <div className={name + 3}></div>
+                    <div className={name + 4}
+                        dangerouslySetInnerHTML={{
+                            __html: `
+                            <video    loop  muted  autoplay playsinline><source src="${sejivideo1}" type="video/mp4" />
+                            </video>`
+                        }}
+                    >
                     </div>
-                    <div data-scroll data-scroll-speed="3" className={name + 5}>
-                        <video src={sejivideo2} playsinline />
+                    <div className={name + 5}
+                        dangerouslySetInnerHTML={{
+                            __html: `
+                            <video
+                            loop
+                            muted
+                            autoplay
+                            playsinline
+                            >
+                            <source src="${sejivideo2}" type="video/mp4" />
+                            </video>`
+                        }}
+                    >
                     </div>
-                    <div data-scroll data-scroll-speed="7" className={name + 6}>
-                        <video src={sejivideo3} playsinline />
+                    <div className={name + 6}
+                        dangerouslySetInnerHTML={{
+                            __html: `
+                            <video
+                            loop
+                            muted
+                            autoplay
+                            playsinline
+                            >
+                            <source src="${sejivideo3}" type="video/mp4" />
+                            </video>`
+                        }}
+                    >
                     </div>
                 </div>
         } else if (index == 1) {//nominal
             name += 'nominal'
             this.content =
                 <div preview={this.props.preview} className='nominal-wrapper'>
-                    <div data-scroll data-scroll-speed="1" className={name + 1}></div>
-                    <div data-scroll data-scroll-speed="5" className={name + 2}></div>
-                    <div data-scroll data-scroll-speed="10" className={name + 3}></div>
-                    <div className={name + 4}>
-                        <video src={nomi1} playsinline />
+                    <div className={name + 1}></div>
+                    <div className={name + 2}></div>
+                    <div className={name + 3}></div>
+                    <div className={name + 4}
+                        dangerouslySetInnerHTML={{
+                            __html: `  <video  loop  muted autoplay playsinline > <source src="${nomi2}" type="video/mp4" /> </video>`
+                        }}
+                    >
                     </div>
-                    <div data-scroll data-scroll-speed="3" className={name + 5}>
-                        <video src={nomi2} playsinline />
+                    <div className={name + 5}
+                        dangerouslySetInnerHTML={{
+                            __html: `  <video  loop  muted autoplay playsinline > <source src="${nomi1}" type="video/mp4" /> </video>`
+                        }}
+                    >
                     </div>
-                    <div data-scroll data-scroll-speed="7" className={name + 6}>
-                        <video src={nomi3} playsinline />
+                    <div className={name + 6}
+                        dangerouslySetInnerHTML={{
+                            __html: `  <video  loop  muted autoplay playsinline > <source src="${nomi3}" type="video/mp4" /> </video>`
+                        }}
+                    >
                     </div>
                 </div>
         } else if (index == 2) {//drop bot
@@ -229,7 +265,17 @@ class ProductPage extends React.Component {
                     <div className={name + 2}></div>
                     <div className={name + 3}></div>
                     <div className={name + 4}>
-                        <video src={sejivideo1} playsinline />
+                        dangerouslySetInnerHTML={{
+                            __html: `
+                            <video
+                            loop
+                            muted
+                            autoplay
+                            playsinline
+                            >
+                            <source src="${sejivideo1}" type="video/mp4" />
+                            </video>`
+                        }}
                     </div>
                     <div className={name + 5}>
                         <video src={sejivideo2} playsinline />
@@ -265,13 +311,10 @@ class ProductPage extends React.Component {
             opacity: [0, 1],
 
         }, 0)
-        //console.log(this.scroll)
-        //set loading animation
     }
 
 
     closeanim() {
-        //console.log('click!! uwu')
 
         var container = document.getElementById('product-wrapper');
 
@@ -318,11 +361,14 @@ class ProductPage extends React.Component {
                 </div>
                 <div id='product-inner' className='product-inner' >
                     <div className='product-preview'>
-                        <div className='product-preview-inner'>
 
-                            <video src={this.props.preview} playsinline >
+                        <div className='product-preview-inner'
+                            dangerouslySetInnerHTML={{
+                                __html: `  <video  loop  muted autoplay playsinline > <source src="${this.props.preview}" type="video/mp4" /> </video>`
+                            }}
+                        >
 
-                            </video>
+
                         </div>
                     </div>
 
@@ -345,9 +391,6 @@ class ProductPage extends React.Component {
                             <span className='product-header-left product-year'>
                                 {this.props.year}
                             </span>
-                        </div>
-                        <div className='product-desc'>
-                            {this.props.desc}
                         </div>
                     </div>
                     <div className='product-gallery'>
