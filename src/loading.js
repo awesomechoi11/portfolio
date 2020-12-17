@@ -8,7 +8,6 @@ import anime from 'animejs';
 
 
 
-
 /*
 
 App.load().then((args) => {
@@ -142,4 +141,44 @@ class Indletters extends React.Component {
             </div>
         );
     }
+}
+
+export class LoadingMobile extends React.Component {
+
+    constructor() {
+        super()
+        this.App = loadable(() => import('./mobile'))
+        this.loadApp = function () {
+            this.load().then((args) => {
+                ReactDOM.render(
+                    <React.StrictMode>
+                        <args.BottomScrollbar />
+                    </React.StrictMode>,
+                    document.getElementById('scrollbar')
+                );
+                ReactDOM.render(
+                    <React.StrictMode>
+                        <args.App />
+                    </React.StrictMode>,
+                    document.getElementById('root')
+                );
+            })
+        }.bind(this.App)
+    }
+
+
+    componentDidMount() {
+        this.loadApp();
+    }
+
+    render() {
+
+        return (// no loading animation for mobile users
+            <div className='loading'>
+                <ReactFontLoader url='https://fonts.googleapis.com/css2?family=Scheherazade&family=Secular+One&family=Sen:wght@400;700&family=Staatliches&display=swap' />
+            </div>
+        )
+    }
+
+
 }

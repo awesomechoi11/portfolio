@@ -1,14 +1,33 @@
 import reportWebVitals from './reportWebVitals';
-import { Loading } from './loading';
+import { Loading, LoadingMobile } from './loading';
 import React from 'react';
 import ReactDOM from 'react-dom';
+import MobileDetect from 'mobile-detect';
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Loading />
-  </React.StrictMode>,
-  document.getElementById('loading')
-);
+//detect if mobile
+//then load respective versions
+var md = new MobileDetect(window.navigator.userAgent);
+if (md.mobile()) {
+  //if mobile
+  //remove lower bar
+  ReactDOM.render(
+    <React.StrictMode>
+      <LoadingMobile />
+    </React.StrictMode>,
+    document.getElementById('loading')
+  );
+} else {
+  ReactDOM.render(
+    <React.StrictMode>
+      <Loading />
+    </React.StrictMode>,
+    document.getElementById('loading')
+  );
+}
+
+
+
+
 
 
 // If you want to start measuring performance in your app, pass a function
