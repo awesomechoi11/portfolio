@@ -20,7 +20,7 @@ export class App extends React.Component {
                 id='app'
                 className="App">
 
-                <IntroPage></IntroPage>
+                <AboutPage></AboutPage>
                 <SmallCard index='0' preview={preview1} video-preview={preview2}
                     enabled='true'
                     title="SEJI"
@@ -49,16 +49,6 @@ export class App extends React.Component {
                     desc="Here are some miscellaneous goodies I made in highschool."
                     year="2018"
                 ></SmallCard>
-                <AboutPage></AboutPage>
-                <IntroPage></IntroPage>
-                <SmallCard index='0' preview={preview1} video-preview={preview2}
-                    enabled='true'
-                    title="SEJI"
-                    role="FRONT END"
-                    desc="Seji is a digital media production company. I emulated a modern minimalist design to attract the most attention to their work. I made up Seji to test new designs and interactive components."
-                    year="2020"
-                ></SmallCard>
-
 
             </div>
         );

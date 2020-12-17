@@ -62,9 +62,9 @@ body {
 
 .product-page {
     position: absolute;
-    left: 28.6875vw;
+    left: 0;
     top: 0px;
-    width: 42.625vw;
+    width: 100vw;
     height: 100vh;
     background: $eerieblack;
     .product-controls {
@@ -107,7 +107,7 @@ body {
                 display: flex;
                 font-family: $secular-one;
                 justify-content: space-between;
-                font-size: calcvw(24);
+                font-size: calcvw(154);
                 text-transform: uppercase;
                 text-align: left;
                 //background: blanchedalmond;
@@ -119,7 +119,7 @@ body {
             }
             .product-desc {
                 height: 50%;
-                font-size: calcvw(14);
+                font-size: calcvw(104);
                 font-family: $sen;
                 text-align: left;
                 color: #e9edde;

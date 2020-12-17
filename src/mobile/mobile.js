@@ -49,13 +49,6 @@ export class IntroPage extends React.Component {
 
 export class AboutPage extends React.Component {
 
-    componentDidMount() {
-
-    }
-
-    linktoresume() {
-
-    }
 
     render() {
         return (
@@ -65,7 +58,7 @@ export class AboutPage extends React.Component {
                     Hello!<br />
                     My name is Brandon Choi.<br />
                     I am a front-end developer currently looking for an internship.<br /><br />
-                    take a peek at my
+                    take a peek at my &nbsp;
                     <span
                         onClick={() => {
                             window.open(window.location.origin + resume)
@@ -73,7 +66,7 @@ export class AboutPage extends React.Component {
                         className='resume'>
                         resume
                     </span>
-                    &nbsp; or my
+                    &nbsp; or my &nbsp;
                     <span
                         onClick={() => {
                             window.open('https://github.com/awesomechoi11')
@@ -114,28 +107,18 @@ export class SmallCard extends React.Component {
                         //disable mwheel
                         let owo = this.props.enabled //if card is enabled
                         if (owo == 'true') {
-                            window.mwheel = false;
-                            window.xdest = -((window.scrollvar.intropagevw + window.scrollvar.smallcardvw / 2 - 50 + ((window.scrollvar.smallcardvw + window.scrollvar.smallcardpadding) * this.index)) / 100 * window.innerWidth)
 
-                            //lower the bottom bar
-                            anime({
-                                targets: '#scrollbar',
-                                easing: 'cubicBezier(.16,.69,.21,.99)',
-                                bottom: -80,
-                                duration: 1000
-                            }).finished.then(() => {
+                            ReactDOM.render(
+                                <ProductPage index={this.index} preview={this.props['video-preview']}
+                                    title={this.props.title}
+                                    role={this.props.role}
+                                    year={this.props.year}
+                                    desc={this.props.desc}
+                                />,
+                                document.getElementById('product-wrapper')
+                            );
 
-                                ReactDOM.render(
-                                    <ProductPage index={this.index} preview={this.props['video-preview']}
-                                        title={this.props.title}
-                                        role={this.props.role}
-                                        year={this.props.year}
-                                        desc={this.props.desc}
-                                    />,
-                                    document.getElementById('product-wrapper')
-                                );
 
-                            });
                         }
 
                     }}>
@@ -212,13 +195,13 @@ class ProductPage extends React.Component {
                     <div data-scroll data-scroll-speed="5" className={name + 2}></div>
                     <div data-scroll data-scroll-speed="10" className={name + 3}></div>
                     <div className={name + 4}>
-                        <video src={sejivideo1} loop autoPlay />
+                        <video src={sejivideo1} playsinline />
                     </div>
                     <div data-scroll data-scroll-speed="3" className={name + 5}>
-                        <video src={sejivideo2} loop autoPlay />
+                        <video src={sejivideo2} playsinline />
                     </div>
                     <div data-scroll data-scroll-speed="7" className={name + 6}>
-                        <video src={sejivideo3} loop autoPlay />
+                        <video src={sejivideo3} playsinline />
                     </div>
                 </div>
         } else if (index == 1) {//nominal
@@ -229,13 +212,13 @@ class ProductPage extends React.Component {
                     <div data-scroll data-scroll-speed="5" className={name + 2}></div>
                     <div data-scroll data-scroll-speed="10" className={name + 3}></div>
                     <div className={name + 4}>
-                        <video src={nomi1} loop autoPlay />
+                        <video src={nomi1} playsinline />
                     </div>
                     <div data-scroll data-scroll-speed="3" className={name + 5}>
-                        <video src={nomi2} loop autoPlay />
+                        <video src={nomi2} playsinline />
                     </div>
                     <div data-scroll data-scroll-speed="7" className={name + 6}>
-                        <video src={nomi3} loop autoPlay />
+                        <video src={nomi3} playsinline />
                     </div>
                 </div>
         } else if (index == 2) {//drop bot
@@ -246,13 +229,13 @@ class ProductPage extends React.Component {
                     <div className={name + 2}></div>
                     <div className={name + 3}></div>
                     <div className={name + 4}>
-                        <video src={sejivideo1} loop autoPlay />
+                        <video src={sejivideo1} playsinline />
                     </div>
                     <div className={name + 5}>
-                        <video src={sejivideo2} loop autoPlay />
+                        <video src={sejivideo2} playsinline />
                     </div>
                     <div className={name + 6}>
-                        <video src={sejivideo3} loop autoPlay />
+                        <video src={sejivideo3} playsinline />
                     </div>
                 </div>
         } else if (index == 3) {//misc
@@ -262,48 +245,11 @@ class ProductPage extends React.Component {
     }
 
     componentDidMount() {
-        this.scroll = new LocomotiveScroll({
-            el: document.getElementById('product-inner'),
-            smooth: true,
-            lerp: .05
-        });
 
-        var fromtovals = {
-            ppimtop: [5.20833, 0],
-            ppiheight: [29.166664, 34.374994],
-            ppwidth: [42.625, 100],
-            ppleft: [28.6875, 0]
-        }
-        var fromvals = {
-            ppimtop: 5.20833,
-            ppiheight: 29.166664,
-            ppwidth: 42.625,
-            ppleft: 28.6875
-        }
+
+
         anime.timeline({
 
-        }).add({
-            targets: fromvals,
-            easing: 'cubicBezier(.16,.69,.21,.99)',
-            ppimtop: 0,
-            ppiheight: 34.374994,
-            ppwidth: 100,
-            ppleft: 0,
-            duration: 1000,
-            delay: 300,
-            update: function () {
-                //console.log(fromvals)
-                // manually set the css values here for the animation
-                let pp = document.getElementsByClassName('product-page')[0].style
-                let ppi = document.getElementsByClassName('product-preview-inner')[0].style
-
-                ppi.marginTop = fromvals.ppimtop + 'vw'
-                ppi.height = fromvals.ppiheight + 'vw'
-                pp.width = fromvals.ppwidth + 'vw'
-                pp.left = fromvals.ppleft + 'vw'
-
-
-            }
         }).add({
             targets: '.cls-1',
             strokeDashoffset: [anime.setDashoffset, 0],
@@ -322,15 +268,13 @@ class ProductPage extends React.Component {
         //console.log(this.scroll)
         //set loading animation
     }
-    componentWillUnmount() {
-        this.scroll.destroy()
-    }
+
 
     closeanim() {
         //console.log('click!! uwu')
-        this.scroll.destroy()
+
         var container = document.getElementById('product-wrapper');
-        window.mwheel = true;
+
         anime.timeline({
             easing: 'cubicBezier(.16,.69,.21,.99)',
             duration: 500
@@ -338,15 +282,10 @@ class ProductPage extends React.Component {
             targets: container,
             top: window.innerHeight,
             opacity: [1, 0],
-        }).add({
-            targets: '#scrollbar',
-            easing: 'cubicBezier(.16,.69,.21,.99)',
-            bottom: 5,
-            duration: 1000,
             complete: function (anim) {
                 ReactDOM.unmountComponentAtNode(container)
             }
-        }, 0)
+        })
 
     }
 
@@ -381,7 +320,7 @@ class ProductPage extends React.Component {
                     <div className='product-preview'>
                         <div className='product-preview-inner'>
 
-                            <video src={this.props.preview} loop autoPlay>
+                            <video src={this.props.preview} playsinline >
 
                             </video>
                         </div>
@@ -427,29 +366,29 @@ class ProductPage extends React.Component {
 
 /*
 export class Indletters extends React.Component {
-    constructor(props) {
-        super(props)
+                        constructor(props) {
+                        super(props)
         console.log(this.props.children.split(''))
     }
     componentDidMount() {
 
-    }
+                    }
 
     render() {
 
         return (
             <div className={this.props.children}>
-                {this.props.children.split('').map((letter, index) => (
-                    <span key={index}>{letter} </span>
-                ))}
-            </div>
+                        {this.props.children.split('').map((letter, index) => (
+                            <span key={index}>{letter} </span>
+                        ))}
+                    </div>
         );
     }
 }
 
 export class Filler extends React.Component {
-    constructor() {
-        super()
+                        constructor() {
+                        super()
         this.hexCode = "0123456789ABCDEF";
         this.color = "#";
         for (let i = 0; i < 6; i++)
@@ -459,9 +398,9 @@ export class Filler extends React.Component {
 
         return (
             <div
-                style={{ background: this.color }}
-                className="filler">
-            </div>
+                        style={{ background: this.color }}
+                        className="filler">
+                    </div>
         );
     }
 }

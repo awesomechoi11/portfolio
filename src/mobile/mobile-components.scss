@@ -38,64 +38,35 @@ html,
 }
 
 .App {
-    width: (27vw + calcvw(260)) * 6 + 90vw + 100vw * 2;
+    //width: (27vw + calcvw(260)) * 6 + 90vw + 100vw * 2;
+    width: 100vw;
     height: 100vh;
     white-space: nowrap;
-    overflow: hidden;
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
     > * {
-        float: left;
+        //float: left;
+
+        width: 90vw;
+
+        //height: 20vh;
         white-space: normal;
     }
 }
 
-.intropage {
-    width: 90vw;
-    height: 100vh;
-    background: $eerieblack;
-    color: $alabaster;
-    font-family: $staatliches;
-    font-size: 64px;
-
-    .intropage-inner {
-        padding-top: 11.822917vw;
-        padding-left: 3.4375vw;
-        width: calcvw(898);
-        > * {
-            //position: relative;
-        }
-    }
-    .big-name {
-        color: $alabaster;
-        font-family: $secular-one;
-        font-size: calcvw(144);
-        white-space: nowrap;
-        margin-left: calcvw(-9);
-    }
-    .name-underline {
-        position: relative;
-        top: calcvw(-26);
-        height: 20px;
-        background: $black;
-    }
-    .desc {
-        font-family: $sen;
-        font-size: calcvw(46);
-        font-weight: 700;
-        text-decoration: underline;
-        text-align: left;
-    }
-}
-
 .aboutpage {
-    width: calcvw(1500);
-    height: 100vh;
+    width: 90vw;
+    margin-left: 5vw;
+    //height: 100vh;
+    //display: inline;
     text-align: left;
-    font-size: calcvw(72);
+    font-size: calcvw(172);
     font-family: $sen;
     color: $alabaster;
     font-weight: 700;
     .message {
-        width: calcvw(1200);
+        //width: 100vw;
         letter-spacing: -2.5px;
         padding-top: 5.20833vw;
         .resume {
@@ -107,18 +78,16 @@ html,
 }
 
 .small-card {
-    height: 100vh;
-    width: 27vw;
     background: $eerieblack;
-    padding-right: calcvw(260);
+    width: 90vw;
+    display: inline;
+    margin: 5vw;
     .card-inner {
+        display: inline;
         //background: red;
-        position: relative;
-        top: calcvw(100);
-        height: calcvw(700);
         .preview {
             background: grey;
-            height: 80%;
+            height: 96.923vw;
             &:hover {
                 cursor: pointer;
             }
@@ -131,13 +100,14 @@ html,
             }
         }
         .card-info {
+            display: inline;
             color: $alabaster;
-            height: 20%;
+
             .card-header {
                 color: white;
                 display: flex;
                 justify-content: space-between;
-                font-size: calcvw(24);
+                font-size: 8vw;
                 text-transform: uppercase;
                 text-align: left;
                 padding-top: calcvw(13);
@@ -147,10 +117,11 @@ html,
                 color: grey;
             }
             .card-desc {
-                height: 50%;
-                font-size: calcvw(14);
+                display: inline;
+                font-size: 5vw;
                 font-family: $sen;
                 text-align: left;
+                margin-bottom: 100px;
             }
         }
     }

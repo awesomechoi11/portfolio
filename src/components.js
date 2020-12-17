@@ -50,13 +50,7 @@ export class IntroPage extends React.Component {
 
 export class AboutPage extends React.Component {
 
-    componentDidMount() {
 
-    }
-
-    linktoresume() {
-
-    }
 
     render() {
         return (
@@ -66,7 +60,7 @@ export class AboutPage extends React.Component {
                     Hello!<br />
                     My name is Brandon Choi.<br />
                     I am a front-end developer currently looking for a job.<br /><br />
-                    take a peek at my
+                    take a peek at my &nbsp;
                     <span
                         onClick={() => {
                             window.open(window.location.origin + resume)
@@ -74,7 +68,7 @@ export class AboutPage extends React.Component {
                         className='resume'>
                         resume
                     </span>
-                    &nbsp; or my
+                    &nbsp; or my &nbsp;
                     <span
                         onClick={() => {
                             window.open('https://github.com/awesomechoi11')
