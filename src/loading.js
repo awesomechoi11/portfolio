@@ -133,7 +133,7 @@ class Indletters extends React.Component {
         return (
             <div className={this.props.children}>
                 {this.props.children.split('').map((letter, index) => {
-                    if (letter == ' ') {
+                    if (letter === ' ') {
                         return <div style={{ float: 'left' }} key={index} className='bchoiletter'> &nbsp;</div>
                     }
                     return <div style={{ float: 'left' }} key={index} className='bchoiletter'>{letter} </div>
@@ -145,17 +145,11 @@ class Indletters extends React.Component {
 
 export class LoadingMobile extends React.Component {
 
-    constructor() {
-        super()
-        this.App = loadable(() => import('./mobile'))
+
+    componentDidMount() {
+        this.App = loadable(() => import('./mobile/mobileapp'))
         this.loadApp = function () {
             this.load().then((args) => {
-                ReactDOM.render(
-                    <React.StrictMode>
-                        <args.BottomScrollbar />
-                    </React.StrictMode>,
-                    document.getElementById('scrollbar')
-                );
                 ReactDOM.render(
                     <React.StrictMode>
                         <args.App />
@@ -164,17 +158,13 @@ export class LoadingMobile extends React.Component {
                 );
             })
         }.bind(this.App)
-    }
-
-
-    componentDidMount() {
         this.loadApp();
     }
 
     render() {
 
         return (// no loading animation for mobile users
-            <div className='loading'>
+            <div className='mobileloading'>
                 <ReactFontLoader url='https://fonts.googleapis.com/css2?family=Scheherazade&family=Secular+One&family=Sen:wght@400;700&family=Staatliches&display=swap' />
             </div>
         )

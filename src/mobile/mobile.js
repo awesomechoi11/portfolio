@@ -4,13 +4,13 @@ import ReactDOM from 'react-dom';
 
 
 
-import sejivideo1 from './seji/Zoomfeature-1.mp4'
-import sejivideo2 from './seji/Carousel-1.m4v'
-import sejivideo3 from './seji/Contact-1.mp4'
+import sejivideo1 from '../seji/Zoomfeature-1.mp4'
+import sejivideo2 from '../seji/Carousel-1.m4v'
+import sejivideo3 from '../seji/Contact-1.mp4'
 
-import nomi1 from './nomina/nomi-para.m4v'
-import nomi2 from './nomina/nomi-hover.m4v'
-import nomi3 from './nomina/nomi-title.m4v'
+import nomi1 from '../nomina/nomi-para.m4v'
+import nomi2 from '../nomina/nomi-hover.m4v'
+import nomi3 from '../nomina/nomi-title.m4v'
 
 
 
@@ -19,7 +19,7 @@ import anime from 'animejs';
 
 
 
-import resume from './Resume.pdf'
+import resume from '../Resume.pdf'
 
 export class IntroPage extends React.Component {
 

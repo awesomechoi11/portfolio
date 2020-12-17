@@ -7,6 +7,8 @@ import MobileDetect from 'mobile-detect';
 //detect if mobile
 //then load respective versions
 var md = new MobileDetect(window.navigator.userAgent);
+console.log(md.mobile())
+
 if (md.mobile()) {
   //if mobile
   //remove lower bar

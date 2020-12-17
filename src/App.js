@@ -119,7 +119,6 @@ export class App extends React.Component {
   componentDidMount() {
     window.appready = true
     if (window.scrollready) {
-
       requestAnimationFrame(posthrottle)
     }
     document.getElementById('root').addEventListener("wheel", event => {
@@ -194,52 +193,50 @@ export class BottomScrollbar extends React.Component {
 
   constructor(props) {
     super(props)
+    this.mousedragevent = (event) => {
+      //need to track difference
+      var initial = event.pageX
+      var prev = event.pageX;
+
+
+      //using let so it can be referenced to remove listener
+      let onMouseMove = function onMouseMove(event) {
+        window.xdest += ((event.pageX - prev) * 100 / 92 / window.innerWidth * window.scrollvar.whole())
+        prev = event.pageX
+      }
+      document.addEventListener('mousemove', onMouseMove);
+      // remove unneeded handlers
+      function removeListeners() {
+        document.removeEventListener('mousemove', onMouseMove);
+        document.getElementById('scrollbar-tab').onmouseup = null;
+      }
+      //need to bind to remove specific function from listener
+      document.onmouseup = removeListeners.bind(onMouseMove)
+
+    }
     this.mousedragevent = this.mousedragevent.bind(this)
 
   }
 
 
-  //on drag of bottom white bar,
-  // track and change window dest
-  mousedragevent(event) {
-    //need to track difference
-    var initial = event.pageX
-    var prev = event.pageX;
 
-
-    //using let so it can be referenced to remove listener
-    let onMouseMove = function onMouseMove(event) {
-      window.xdest += ((event.pageX - prev) * 100 / 92 / window.innerWidth * window.scrollvar.whole())
-      prev = event.pageX
-    }
-
-    document.addEventListener('mousemove', onMouseMove);
-    // remove unneeded handlers
-    function removeListeners() {
-      document.removeEventListener('mousemove', onMouseMove);
-      document.getElementById('scrollbar-tab').onmouseup = null;
-    }
-    //need to bind to remove specific function from listener
-    document.onmouseup = removeListeners.bind(onMouseMove)
-
-  }
 
   componentDidMount() {
     window.scrollready = true
     if (window.appready) {
       requestAnimationFrame(posthrottle)
-
-      //draggable scroll start *******************
-      document.getElementById('scrollbar-tab').onmousedown = this.mousedragevent
-      document.getElementById('scrollbar-tab').ondragstart = function () {
-        return false;
-      };
-      document.getElementById('scrollbar-tab-dummy').onmousedown = this.mousedragevent
-      document.getElementById('scrollbar-tab-dummy').ondragstart = function () {
-        return false;
-      };
-      //draggable scroll end **********************
     }
+
+    //draggable scroll start *******************
+    document.getElementById('scrollbar-tab').onmousedown = this.mousedragevent
+    document.getElementById('scrollbar-tab').ondragstart = function () {
+      return false;
+    };
+    document.getElementById('scrollbar-tab-dummy').onmousedown = this.mousedragevent
+    document.getElementById('scrollbar-tab-dummy').ondragstart = function () {
+      return false;
+    };
+    //draggable scroll end **********************
 
   }
   left(index) {// calculates the left value for absolute positioning
