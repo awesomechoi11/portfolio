@@ -148,7 +148,7 @@ export class App extends React.Component {
           role="FRONT END"
           desc="Seji is a digital media production company. I emulated a modern minimalist design to attract the most attention to their work. I made up Seji to test new designs and interactive components."
           year="2020"
-          link={'seji'}
+          link={'https://www.seji.brandon-choi.info/'}
         ></SmallCard>
         <SmallCard index='1' preview={nomina1} video-preview={nomina2}
           enabled='true'
@@ -156,7 +156,7 @@ export class App extends React.Component {
           role="FRONT END"
           desc="Nomina is a high end jewelry company. I incorporated elegent and simplistic animations and interactions."
           year="2020"
-          link={'nomina'}
+          link={'https://www.nomina.brandon-choi.info/'}
         ></SmallCard>
         <SmallCard index='2' preview={comingsoon} video-preview={preview2}
           enabled='false'

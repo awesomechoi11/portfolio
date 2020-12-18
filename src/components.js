@@ -5,6 +5,17 @@ import LocomotiveScroll from 'locomotive-scroll';
 import '../node_modules/locomotive-scroll/dist/locomotive-scroll.css'
 
 
+
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    useParams
+} from "react-router-dom";
+
+
+
 import sejivideo1 from './seji/Zoomfeature-1.mp4'
 import sejivideo2 from './seji/Carousel-1.m4v'
 import sejivideo3 from './seji/Contact-1.mp4'
@@ -326,7 +337,9 @@ class ProductPage extends React.Component {
             document.getElementById('visitmode').className = ''
         }
         this.preview.current.onclick = function () {
-            window.location = this.props.link
+            //switch
+            window.open(this.props.link)
+            //window.location = this.props.link
         }.bind(this)
     }
     componentWillUnmount() {
