@@ -148,6 +148,7 @@ export class App extends React.Component {
           role="FRONT END"
           desc="Seji is a digital media production company. I emulated a modern minimalist design to attract the most attention to their work. I made up Seji to test new designs and interactive components."
           year="2020"
+          link={'seji'}
         ></SmallCard>
         <SmallCard index='1' preview={nomina1} video-preview={nomina2}
           enabled='true'
@@ -155,6 +156,7 @@ export class App extends React.Component {
           role="FRONT END"
           desc="Nomina is a high end jewelry company. I incorporated elegent and simplistic animations and interactions."
           year="2020"
+          link={'nomina'}
         ></SmallCard>
         <SmallCard index='2' preview={comingsoon} video-preview={preview2}
           enabled='false'
@@ -185,8 +187,6 @@ export class App extends React.Component {
     );
   }
 }
-
-
 
 
 export class BottomScrollbar extends React.Component {
@@ -301,3 +301,52 @@ export class BottomScrollbar extends React.Component {
 }
 
 
+export class CustomMouse extends React.Component {
+  constructor(props) {
+    super(props)
+    this.pointerX = 0
+    this.pointerY = 0
+    this.itemHoverX = 0
+    this.itemHoverY = 0
+    this.hovering = false
+    this.mouse = React.createRef()
+  }
+  componentDidMount() {
+    //update mousemovements
+
+    document.addEventListener("mousemove", function (event) {
+
+      this.pointerX = event.clientX;
+      this.pointerY = event.clientY;
+
+    }.bind(this));
+    console.log(this.mouse.current)
+    this.mouse.current.style.transition =
+      "transform 0.07s, width 0.3s, height 0.3s, border-radius 0.2s";
+    var movement = function () {
+
+      this.mouse.current.style.transform =
+        "matrix(1, 0, 0, 1, " +
+        this.pointerX +
+        ", " +
+        this.pointerY +
+        ") translate3d(-50%, -50%, 0)";
+
+      requestAnimationFrame(movement);
+    }.bind(this);
+    requestAnimationFrame(movement);
+    /*
+  */
+  }
+
+  render() {
+
+    return (
+      <div ref={this.mouse} id='CustomMouse'>
+        <div id='visitmode'>
+          VISIT PAGE
+        </div>
+      </div>
+    );
+  }
+}

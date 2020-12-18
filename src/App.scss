@@ -1,6 +1,7 @@
 $eerieblack: #242320;
 $alabaster: #e9edde;
 $black: #000;
+$ruby: #d81e5b;
 
 $scheherazade: "Scheherazade", serif;
 .scheherazade {
@@ -123,6 +124,7 @@ body {
 .productitems,
 .product-preview-inner {
   //display: none;
+  cursor: pointer;
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
   -webkit-animation-duration: 3s;
@@ -304,4 +306,36 @@ body {
   .drop6 {
     @include calcvwall($width: 750, $height: 422.05, $left: 883, $top: 2641);
   }
+}
+
+#custommousewrap {
+  pointer-events: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 3;
+}
+#CustomMouse {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background: $ruby;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#CustomMouse.hovering {
+  width: 135px;
+  height: 35px;
+  border-radius: 0%;
+}
+#visitmode {
+  font-family: $secular-one;
+  white-space: nowrap;
+  opacity: 0;
+  transform: 0.07s, width 0.3s, height 0.3s, border-radius 0.2s, opacity 0.3s;
+}
+#visitmode.hovering {
+  opacity: 1;
 }

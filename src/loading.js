@@ -8,45 +8,38 @@ import anime from 'animejs';
 
 
 
-/*
-
-App.load().then((args) => {
-    console.log(args.App)
-    ReactDOM.render(
-        <React.StrictMode>
-        <args.BottomScrollbar />
-        </React.StrictMode>,
-        document.getElementById('scrollbar')
-        );
-        ReactDOM.render(
-            <React.StrictMode>
-            <args.App />
-            </React.StrictMode>,
-            document.getElementById('root')
-            );
-        })
-        */
-
-
 export class Loading extends React.Component {
 
     constructor() {
         super()
         this.App = loadable(() => import('./App'))
-        this.loadApp = function () {
+        this.loadApp = function (owo = false) {
+
             this.load().then((args) => {
-                ReactDOM.render(
-                    <React.StrictMode>
-                        <args.BottomScrollbar />
-                    </React.StrictMode>,
-                    document.getElementById('scrollbar')
-                );
-                ReactDOM.render(
-                    <React.StrictMode>
-                        <args.App />
-                    </React.StrictMode>,
-                    document.getElementById('root')
-                );
+                if (owo) {
+
+                    ReactDOM.render(
+                        <React.StrictMode>
+                            <args.CustomMouse />
+                        </React.StrictMode>,
+                        document.getElementById('custommousewrap')
+                    );
+
+                } else {
+
+                    ReactDOM.render(
+                        <React.StrictMode>
+                            <args.BottomScrollbar />
+                        </React.StrictMode>,
+                        document.getElementById('scrollbar')
+                    );
+                    ReactDOM.render(
+                        <React.StrictMode>
+                            <args.App />
+                        </React.StrictMode>,
+                        document.getElementById('root')
+                    );
+                }
             })
         }.bind(this.App)
     }
@@ -88,7 +81,8 @@ export class Loading extends React.Component {
             duration: totaldur / 3,
             complete: function (anim) {
                 document.getElementById('loading').style.pointerEvents = 'none'
-            }
+                this.loadApp(true);
+            }.bind(this)
         }, '-=' + totaldur / 3)
     }
 

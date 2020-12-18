@@ -17,9 +17,6 @@ import nomi3 from './nomina/nomi-title.m4v'
 
 import anime from 'animejs';
 
-
-
-
 import resume from './Resume.pdf'
 
 export class IntroPage extends React.Component {
@@ -93,7 +90,6 @@ export class SmallCard extends React.Component {
         //console.log(this.props)
         this.uwu = {}
         if (this.props.enabled == 'false') {
-
             this.uwu = { left: '0px' }
         }
         //console.log(this.uwu)
@@ -126,6 +122,7 @@ export class SmallCard extends React.Component {
                                         role={this.props.role}
                                         year={this.props.year}
                                         desc={this.props.desc}
+                                        link={this.props.link}
                                     />,
                                     document.getElementById('product-wrapper')
                                 );
@@ -194,6 +191,7 @@ class ProductPage extends React.Component {
 
     constructor(props) {
         super(props)
+        this.preview = React.createRef()
         this.closeanim = this.closeanim.bind(this);
         //this.productname = this.props.productname;
         //console.log(this.props)
@@ -316,6 +314,20 @@ class ProductPage extends React.Component {
         }, 0)
         //console.log(this.scroll)
         //set loading animation
+
+        //add event litener for preview for hover to change mouse
+
+        this.preview.current.onmouseover = () => {
+            document.getElementById('CustomMouse').className = 'hovering'
+            document.getElementById('visitmode').className = 'hovering'
+        }
+        this.preview.current.onmouseout = () => {
+            document.getElementById('CustomMouse').className = ''
+            document.getElementById('visitmode').className = ''
+        }
+        this.preview.current.onclick = function () {
+            window.location = this.props.link
+        }.bind(this)
     }
     componentWillUnmount() {
         this.scroll.destroy()
@@ -374,7 +386,7 @@ class ProductPage extends React.Component {
                 </div>
                 <div id='product-inner' className='product-inner' >
                     <div className='product-preview'>
-                        <div className='product-preview-inner'>
+                        <div ref={this.preview} className='product-preview-inner'>
 
                             <video src={this.props.preview} loop autoPlay>
 
@@ -421,26 +433,7 @@ class ProductPage extends React.Component {
 
 
 /*
-export class Indletters extends React.Component {
-    constructor(props) {
-        super(props)
-        console.log(this.props.children.split(''))
-    }
-    componentDidMount() {
 
-    }
-
-    render() {
-
-        return (
-            <div className={this.props.children}>
-                {this.props.children.split('').map((letter, index) => (
-                    <span key={index}>{letter} </span>
-                ))}
-            </div>
-        );
-    }
-}
 
 export class Filler extends React.Component {
     constructor() {
